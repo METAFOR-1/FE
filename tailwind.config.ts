@@ -15,6 +15,18 @@ export default {
       fontFamily: {
         "sf-pro": ["SF-Pro"],
       },
+      transitionDuration: {
+        "2000": "2000ms",
+      },
+      keyframes: {
+        bounce: {
+          "0%, 100%": { transform: "translateY(-5%)" },
+          "50%": { transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        "bounce-custom": "bounce 10s infinite",
+      },
     },
   },
   plugins,

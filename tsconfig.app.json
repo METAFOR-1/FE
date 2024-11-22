@@ -10,7 +10,7 @@
       "@/*": ["src/*"]
     },
     "types": ["vite/client"],
-
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

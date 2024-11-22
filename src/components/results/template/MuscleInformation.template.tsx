@@ -1,4 +1,5 @@
 import { cn } from "fast-jsx/util";
+import { useEffect, useState } from "react";
 
 interface MuscleInformationProps {
   imageUrl: string;
@@ -23,14 +24,30 @@ export default function MuscleInformation({
   const body = {
     displays: "flex justify-between",
   };
+  const imagePath = `/public/images/muscle/${removeSpecialCharacters(
+    muscleName
+  )}.jpg`;
+  const [imageExists, setImageExists] = useState<boolean | null>(null);
+  useEffect(() => {
+    const checkImage = async () => {
+      try {
+        const response = await fetch(imagePath, { method: "HEAD" }); // HTTP HEAD 요청
+        setImageExists(response.ok); // 상태 코드가 200대이면 true
+      } catch (error) {
+        setImageExists(false); // 요청 실패 시
+      }
+    };
+    checkImage();
+  }, [imagePath]);
+  useEffect(() => {
+    console.log(imageExists);
+  }, [imageExists]);
   return (
     <div className={cn(container)}>
       <div className="font-bold text-3xl">{muscleName}</div>
       <div className={cn(body)}>
         <img
-          src={`/public/images/muscle/${removeSpecialCharacters(
-            muscleName
-          )}.jpg`}
+          src={imageExists ? imagePath : "/public/images/muscle/default.png"}
           className="w-48 aspect-square border-2 rounded-md"
         />
         <div className="border-2 rounded-xl p-4">

@@ -26,6 +26,7 @@ export default function ControllerTemplate() {
         <div className="text-[48px] font-bold">
           마이크에 대고 증상을 말해주세요.
         </div>
+        <div className="text-lg">스페이스바를 눌러 실행할 수 있습니다.</div>
         <div className="text-[30px] text-[#646262]">또는</div>
         {!isRecording ? (
           <Button

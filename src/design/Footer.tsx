@@ -5,10 +5,10 @@ const contents: string[] = ["채용", "이용약관", "개인정보처리방침"
 export default function Footer() {
   const container = {
     positions: "fixed bottom-0 left-0",
-    sizes: "h-[119px] w-full",
+    sizes: "h-[80px] w-full",
     displays: "flex items-center justify-between",
     backgrounds: "bg-orange-500",
-    paddings: "px-20 py-6",
+    paddings: "px-20 py-3",
     colors: "text-white",
   };
 

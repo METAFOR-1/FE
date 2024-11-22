@@ -7,9 +7,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   return (
     <div className="font-sf-pro">
-      {pathname !== "/" && <Header />}
+      {pathname !== "/record" && <Header />}
       {children}
-      {pathname !== "/" && <Footer />}
+      {pathname !== "/record" && <Footer />}
     </div>
   );
 }

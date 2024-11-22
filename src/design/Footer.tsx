@@ -12,6 +12,10 @@ export default function Footer() {
     colors: "text-white",
   };
 
+  const spacer = {
+    sizes: "h-[80px] w-full", // Footer 높이만큼의 공간
+  };
+
   const leftText = {
     fontSizes: "text-lg font-bold",
     colors: "text-black",
@@ -24,26 +28,32 @@ export default function Footer() {
   };
 
   return (
-    <div className={cn(container)}>
-      {/* 왼쪽: AI TRIP 및 메뉴 */}
-      <div className="flex items-center gap-x-10">
-        <div className={cn(leftText)}>AI TRIP</div>
+    <>
+      {/* 위쪽 여백 */}
+      <div className={cn(spacer)}></div>
+
+      {/* Footer 영역 */}
+      <div className={cn(container)}>
+        {/* 왼쪽: AI TRIP 및 메뉴 */}
         <div className="flex items-center gap-x-10">
-          {contents.map((content, index) => (
-            <div key={index} className="font-bold">
-              {content}
-            </div>
-          ))}
+          <div className={cn(leftText)}>근강하세</div>
+          <div className="flex items-center gap-x-10">
+            {contents.map((content, index) => (
+              <div key={index} className="font-bold">
+                {content}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 오른쪽: 설명 텍스트 */}
+        <div className={cn(rightText)}>
+          <p>
+            이 서비스는 의료 진단 또는 치료를 목적으로 하지 않으며, 건강 관리와
+            증상 완화를 위한 참고 정보를 제공합니다
+          </p>
         </div>
       </div>
-
-      {/* 오른쪽: 설명 텍스트 */}
-      <div className={cn(rightText)}>
-        <p>
-          이 서비스는 의료 진단 또는 치료를 목적으로 하지 않으며, 건강 관리와
-          증상 완화를 위한 참고 정보를 제공합니다
-        </p>
-      </div>
-    </div>
+    </>
   );
 }

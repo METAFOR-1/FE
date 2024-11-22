@@ -3,7 +3,7 @@ import { FiSearch, FiMenu } from "react-icons/fi";
 
 export default function Header() {
   const container = {
-    positions: "fixed top-0 left-0",
+    positions: "fixed top-0 left-0 z-50",
     sizes: "h-[80px] w-full",
     displays: "flex items-center justify-between",
     paddings: "px-10",
@@ -13,8 +13,8 @@ export default function Header() {
   };
 
   const logo = {
-    fonts: "text-2xl font-bold",
-    colors: "text-black", // 로고 글자색을 검정으로 설정
+    sizes: "h-10", 
+    margins: "ml-20",    
   };
 
   const menu = {
@@ -48,39 +48,50 @@ export default function Header() {
   };
 
   return (
-    <header className={cn(container)}>
-      {/* 로고 */}
-      <div className={cn(logo)}>근강하세</div>
-
-      {/* 검색창 */}
-      <div className={cn(searchBar.container)}>
-        <input
-          type="text"
-          placeholder="Search..."
-          className={cn(searchBar.input)}
+   
+    <>
+      {/* 헤더 */}
+      <div className={cn(container)}>
+        {/* 로고 */}
+        <img 
+        src="src/asset/images/logo.png" 
+        alt="Logo"
+        className={cn(logo)}
         />
-        <FiSearch className={cn(searchBar.icon)} />
-      </div>
 
-      {/* 메뉴 */}
-      <nav className={cn(menu)}>
-        <div className={cn(menuItem, "text-orange-500 font-bold")}>홈</div>
-        <div className={cn(menuItem)}>업데이트</div>
-        <div className={cn(menuItem)}>고객 지원</div>
-        <div className={cn(menuItem)}>문의하기</div>
-      </nav>
-
-      {/* 회원가입/로그인 버튼 */}
-      <div className="flex items-center gap-x-4">
-        <div className={authButtons.container}>
-          {/* 회원가입 버튼 */}
-          <button className={authButtons.signup}>회원가입</button>
-          {/* 로그인 버튼 */}
-          <button className={authButtons.login}>로그인</button>
+        {/* 검색창 */}
+        <div className={cn(searchBar.container)}>
+          <input
+            type="text"
+            placeholder="Search..."
+            className={cn(searchBar.input)}
+          />
+          <FiSearch className={cn(searchBar.icon)} />
         </div>
-        {/* 햄버거 메뉴 아이콘 */}
-        <FiMenu className={cn(menuIcon)} />
+
+        {/* 메뉴 */}
+        <nav className={cn(menu)}>
+          <div className={cn(menuItem, "text-orange-500 font-bold")}>홈</div>
+          <div className={cn(menuItem)}>업데이트</div>
+          <div className={cn(menuItem)}>고객 지원</div>
+          <div className={cn(menuItem)}>문의하기</div>
+        </nav>
+
+        {/* 회원가입/로그인 버튼 */}
+        <div className="flex items-center gap-x-4">
+          <div className={authButtons.container}>
+            {/* 회원가입 버튼 */}
+            <button className={authButtons.signup}>회원가입</button>
+            {/* 로그인 버튼 */}
+            <button className={authButtons.login}>로그인</button>
+          </div>
+          {/* 햄버거 메뉴 아이콘 */}
+          <FiMenu className={cn(menuIcon)} />
+        </div>
       </div>
-    </header>
+
+      {/* 상단 여백 추가 */}
+      <div className="h-[80px]"></div>
+    </>
   );
 }

@@ -3,8 +3,12 @@ import Bubble from "../molecule/Bubble.molecule";
 import { Result } from "@/connection/api/server";
 import MuscleInformation from "./MuscleInformation.template";
 import Youtube from "../molecule/Youtube.molecule";
-
-export default function Paper({ result }: { result: Result }) {
+import { forwardRef, Ref } from "react";
+interface Props {
+  result: Result;
+}
+function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
+  const { result } = props;
   const container = {
     displays: "flex flex-col gap-y-12 items-center",
     sizes: "w-[210mm] h-[297mm]",
@@ -14,7 +18,7 @@ export default function Paper({ result }: { result: Result }) {
   const match = result.youtubeLink.match(/youtu\.be\/([\w-]+)/);
   const videoId = match ? match[1] : null;
   return (
-    <div className={cn(container)}>
+    <div ref={ref} className={cn(container)}>
       <div className="text-4xl font-bold">분석 결과</div>
       <Bubble
         text="이런 근육의 문제가 의심돼요."
@@ -33,3 +37,10 @@ export default function Paper({ result }: { result: Result }) {
     </div>
   );
 }
+
+export default forwardRef<
+  HTMLDivElement,
+  {
+    props: Props;
+  }
+>(Paper);

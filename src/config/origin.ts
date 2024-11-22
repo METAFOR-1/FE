@@ -1,7 +1,7 @@
-const { externalOrigin: VITE_EXTERNAL_ORIGIN } = import.meta.env;
+const { VITE_EXTERNAL_ORIGIN: externalOrigin } = import.meta.env;
 
 const origin = {
-  external: VITE_EXTERNAL_ORIGIN,
+  external: externalOrigin,
 };
 
 export default origin;

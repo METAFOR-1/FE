@@ -3,11 +3,12 @@ import { FiSearch, FiMenu } from "react-icons/fi";
 
 export default function Header() {
   const container = {
-    positions: "relative",
+    positions: "fixed top-0 left-0",
     sizes: "h-[80px] w-full",
     displays: "flex items-center justify-between",
     paddings: "px-10",
     colors: "black",
+    backgrounds: "bg-white",
     shadows: "shadow-md",
   };
 
@@ -34,18 +35,17 @@ export default function Header() {
   };
 
   const searchBar = {
-    container: "flex items-center w-[700px] h-10 border border-gray-300 rounded-full pl-4 pr-2 bg-white shadow-sm",
-    input:
-      "w-full border-none outline-none text-gray-500 placeholder-gray-400",
+    container:
+      "flex items-center w-[700px] h-10 border border-gray-300 rounded-full pl-4 pr-2 bg-white shadow-sm",
+    input: "w-full border-none outline-none text-gray-500 placeholder-gray-400",
     icon: "text-gray-400 w-5 h-5",
   };
 
   const menuIcon = {
     sizes: "w-6 h-6",
     colors: "text-black cursor-pointer hover:text-gray-700",
-    margins: "mx-8", 
+    margins: "mx-8",
   };
-
 
   return (
     <header className={cn(container)}>

@@ -1,7 +1,6 @@
-import { result } from "@/asset/mock";
 import httpRequest from "../axios";
 
-const api = httpRequest.api("v1");
+const api = httpRequest.api();
 export interface Result {
   muscleName: string;
   youtubeTitle: string;
@@ -9,15 +8,18 @@ export interface Result {
   reason: string;
   imageLink: string;
 }
-
-async function get(request: string): Promise<Result> {
-  // const response = await api.get<Result>("/pathname");
-  // return response.data;
-  return result;
+async function get() {
+  const response = await api.get("/check");
+  return response.data;
+}
+async function post(request: string) {
+  const response = await api.post<any, Result>("/check");
+  return response.data;
 }
 
 const serverApi = {
   get,
+  post,
 };
 
 export default serverApi;

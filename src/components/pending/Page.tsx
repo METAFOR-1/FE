@@ -14,9 +14,10 @@ export default function PendingPage() {
     displays: "flex flex-col gap-y-5.5 items-center justify-center",
     sizes: "w-full min-h-screen",
   };
+
   const { mutate } = useMutation({
     mutationKey: ["getServer"],
-    mutationFn: (request: string) => serverApi.get(request),
+    mutationFn: (request: string) => serverApi.post(request),
     onSuccess: (result) => {
       setResult(result);
       router("/result");

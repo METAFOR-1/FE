@@ -13,8 +13,8 @@ export default function Header() {
   };
 
   const logo = {
-    sizes: "h-10", 
-    margins: "ml-20",    
+    sizes: "h-10",
+    margins: "ml-20",
   };
 
   const menu = {
@@ -48,16 +48,11 @@ export default function Header() {
   };
 
   return (
-   
     <>
       {/* 헤더 */}
       <div className={cn(container)}>
         {/* 로고 */}
-        <img 
-        src="src/asset/images/logo.png" 
-        alt="Logo"
-        className={cn(logo)}
-        />
+        <img src="/images/logo.png" alt="Logo" className={cn(logo)} />
 
         {/* 검색창 */}
         <div className={cn(searchBar.container)}>

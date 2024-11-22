@@ -7,7 +7,6 @@ export default function ControllerTemplate() {
     positions: "relative",
     displays: "flex flex-col items-center",
     sizes: "w-full",
-    boundaries: "border-2 border-green-dark",
   };
   return (
     <div className={cn(container)}>
@@ -29,7 +28,7 @@ export default function ControllerTemplate() {
             width: "w-[698px]",
             height: "h-[106px]",
             font: "text-[36px]",
-            textColor: "text-[#646262]/50 hover:text-[#646262] ",
+            textColor: "text-[#646262]/50 hover:text-white duration-500 ",
             boundary: "rounded-2xl",
           }}
         />

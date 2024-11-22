@@ -15,7 +15,7 @@ export default function StartButton({
     boundaries: "rounded-full",
     borders: "border-2 border-orange-500",
     shadow: "shadow-md shadow-gray-500",
-    styles: "cursor-pointer",
+    styles: "cursor-pointer hover:scale-105 duration-300",
     className,
   };
   const body = {

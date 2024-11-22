@@ -4,7 +4,7 @@ const contents: string[] = ["채용", "이용약관", "개인정보처리방침"
 
 export default function Footer() {
   const container = {
-    positions: "relative",
+    positions: "fixed bottom-0 left-0",
     sizes: "h-[119px] w-full",
     displays: "flex items-center justify-between",
     backgrounds: "bg-orange-500",
@@ -39,7 +39,10 @@ export default function Footer() {
 
       {/* 오른쪽: 설명 텍스트 */}
       <div className={cn(rightText)}>
-        <p>이 서비스는 의료 진단 또는 치료를 목적으로 하지 않으며, 건강 관리와 증상 완화를 위한 참고 정보를 제공합니다</p>
+        <p>
+          이 서비스는 의료 진단 또는 치료를 목적으로 하지 않으며, 건강 관리와
+          증상 완화를 위한 참고 정보를 제공합니다
+        </p>
       </div>
     </div>
   );

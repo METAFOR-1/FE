@@ -5,7 +5,7 @@ import Box from "@/components/choice/molecule/Box.molecule";
 export default function ChoicePage() {
   const navigate = useNavigate();
 
-  const bodyParts = ["머리", "목", "어깨", "가슴", "팔", "허리", "무릎", "발목"];
+  const bodyParts = ["머리", "목", "어깨", "가슴", "등", "팔", "허리", "골반", "다리", "발목"];
 
   const handlePartSelect = (part: string) => {
     // 선택된 부위를 쿼리 파라미터로 전달하며 survey 페이지로 이동

@@ -9,7 +9,7 @@ interface BoxProps {
 
 export default function Box({ text, onClick }: BoxProps) {
   const container = {
-    boundaries: "border-2 border-gray-300 p-4 m-2 rounded cursor-pointer hover:border-blue-500",
+    boundaries: "border-2 border-gray-300 p-4 m-2 rounded cursor-pointer hover:border-red-500 duration-500",
   };
 
   return (

@@ -5,6 +5,10 @@ interface MuscleInformationProps {
   muscleName: string;
   description: string;
 }
+
+function removeSpecialCharacters(text: string) {
+  return text.replace(/['"]/g, "");
+}
 export default function MuscleInformation({
   imageUrl,
   muscleName,
@@ -24,7 +28,9 @@ export default function MuscleInformation({
       <div className="font-bold text-3xl">{muscleName}</div>
       <div className={cn(body)}>
         <img
-          src={`/public/images/muscle/${muscleName}.jpg`}
+          src={`/public/images/muscle/${removeSpecialCharacters(
+            muscleName
+          )}.jpg`}
           className="w-48 aspect-square border-2 rounded-md"
         />
         <div className="border-2 rounded-xl p-4">

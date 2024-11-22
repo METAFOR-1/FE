@@ -4,10 +4,11 @@ import { useMutation } from "react-query";
 import Loading from "./molecule/Loading.molecule";
 import Bubble from "./molecule/Bubble.molecule";
 import serverApi from "@/connection/api/server";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function PendingPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const router = useNavigate();
   const { request, setResult } = useAnalysisStore();
   const container = {
@@ -16,7 +17,8 @@ export default function PendingPage() {
   };
 
   const { mutate } = useMutation({
-    mutationKey: ["getServer"],
+    retry: 1,
+    mutationKey: ["postServer"],
     mutationFn: (request: string) => serverApi.post(request),
     onSuccess: (result) => {
       setResult(result);
@@ -24,7 +26,10 @@ export default function PendingPage() {
     },
   });
   useEffect(() => {
-    if (request) return mutate(request);
+    if (!isLoading && request) {
+      setIsLoading(true);
+      return mutate(request);
+    }
   }, [request]);
   return (
     <div className={cn(container)}>

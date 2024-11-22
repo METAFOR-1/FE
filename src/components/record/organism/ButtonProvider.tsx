@@ -21,6 +21,7 @@ export default function ButtonProvider({
   const audioChunks = useRef<Blob[]>([]);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const { mutate } = useMutation({
+    retry: 1,
     mutationKey: ["stt"],
     mutationFn: async (audioUrl: string) => {
       const response = await fetch(audioUrl);

@@ -16,7 +16,7 @@ function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
     boundaries: "px-7.5 py-6",
     backgrounds: "bg-white",
   };
-  const match = result.youtubeLink.match(/youtu\.be\/([\w-]+)/);
+  const match = result.youtubeLink.split("?v=");
   const videoId = match ? match[1] : null;
   return (
     <div ref={ref} className={cn(container)}>

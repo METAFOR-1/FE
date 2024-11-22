@@ -1,11 +1,12 @@
 import { cn } from "fast-jsx/util";
-import { result } from "@/asset/mock";
 import Paper from "./template/Paper.template";
 import { Button } from "fast-jsx";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
+import useAnalysisStore from "@/store";
 
 export default function ResultPage() {
+  const { result } = useAnalysisStore();
   const ref = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
     content: () => ref.current,

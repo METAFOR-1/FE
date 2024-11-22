@@ -10,6 +10,7 @@ export default function MuscleInformation({
   muscleName,
   description,
 }: MuscleInformationProps) {
+  console.log(imageUrl);
   const container = {
     displays: "flex flex-col",
     sizes: "h-100 w-full ",

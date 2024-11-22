@@ -39,6 +39,31 @@ export default function ButtonProvider({
     if (!audioUrl) return;
     mutate(audioUrl);
   }, [audioUrl]);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.code === "Space") {
+        event.preventDefault(); // Prevent default space scrolling
+        if (!isRecording) {
+          recordAudio({
+            isRecordingState,
+            audioUrlState: [audioUrl, setAudioUrl],
+            chunks: audioChunks,
+            mediaRecorderRef,
+          });
+        } else {
+          mediaRecorderRef.current?.stop();
+          setIsRecording(false);
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [isRecording, audioUrl]);
   if (!isRecording)
     return (
       <Button

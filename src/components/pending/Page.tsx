@@ -36,7 +36,11 @@ export default function PendingPage() {
         ]}
         className="w-full flex justify-start"
       />
-      <Bubble text={request} className="w-full flex justify-end" />
+      <Bubble
+        text={request}
+        className="w-full flex justify-end"
+        isQuote={true}
+      />
     </div>
   );
 }

@@ -1,16 +1,18 @@
 import { State } from "fast-jsx/interface";
 import recordAudio from "@/util/recordAudio";
 import StartButton from "../molecule/Button";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { externalApi } from "@/connection";
+import { useNavigate } from "react-router-dom";
 
-export default function ButtonProvider() {
+export default function ButtonProvider({ className }: { className?: string }) {
+  const router = useNavigate();
   const [audioUrl, setAudioUrl] = useState<string>("");
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const audioChunks = useRef<Blob[]>([]);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const { mutate } = useMutation({
+  const { mutate, isSuccess } = useMutation({
     mutationKey: ["stt"],
     mutationFn: async (audioUrl: string) => {
       const response = await fetch(audioUrl);
@@ -21,9 +23,17 @@ export default function ButtonProvider() {
       return externalApi.post(file);
     },
   });
+  useEffect(() => {
+    if (!audioUrl) return;
+    mutate(audioUrl);
+  }, [audioUrl]);
+  useEffect(() => {
+    if (isSuccess) router("/result");
+  }, [isSuccess]);
   if (!isRecording)
     return (
       <StartButton
+        className={className}
         onClick={() =>
           recordAudio({
             isRecordingState: [isRecording, setIsRecording],
@@ -39,7 +49,6 @@ export default function ButtonProvider() {
       onClick={() => {
         mediaRecorderRef.current?.stop();
         setIsRecording(false);
-        mutate(audioUrl);
       }}
     >
       Stop Recording

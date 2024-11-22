@@ -15,6 +15,7 @@ export default function ResultPage() {
     displays: "flex flex-col gap-y-7.5 items-center justify-center",
     sizes: "w-full min-h-screen",
     paddings: "p-24",
+    backgrounds: "bg-gray-light",
   };
   if (!result) return <div>?</div>;
   return (

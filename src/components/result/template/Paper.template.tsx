@@ -10,10 +10,11 @@ interface Props {
 function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
   const { result } = props;
   const container = {
-    displays: "flex flex-col gap-y-12 items-center",
+    displays: "flex flex-col gap-y-7.5 items-center",
     sizes: "w-[210mm] h-[297mm]",
     test: "border-white border-2",
     boundaries: "px-7.5 py-6",
+    backgrounds: "bg-white",
   };
   const match = result.youtubeLink.match(/youtu\.be\/([\w-]+)/);
   const videoId = match ? match[1] : null;
@@ -33,7 +34,23 @@ function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
         text="이런 스트레칭을 추천드려요!"
         className="w-full flex justify-start"
       />
-      {videoId && <Youtube id={videoId} width="560" height="360" />}
+      {videoId && (
+        <div>
+          <div className="print:hidden">
+            <Youtube id={videoId} width="560" height="360" />
+          </div>
+          <div className="relative hidden print:block">
+            <img
+              src={`https://img.youtube.com/vi/${videoId}/0.jpg`}
+              width={360}
+            />
+            <img
+              src="/images/youtube.webp"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

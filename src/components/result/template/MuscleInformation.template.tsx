@@ -10,6 +10,7 @@ export default function MuscleInformation({
   muscleName,
   description,
 }: MuscleInformationProps) {
+  console.log(imageUrl);
   const container = {
     displays: "flex flex-col",
     sizes: "h-100 w-full ",
@@ -22,9 +23,14 @@ export default function MuscleInformation({
     <div className={cn(container)}>
       <div className="font-bold text-3xl">{muscleName}</div>
       <div className={cn(body)}>
-        <img src={imageUrl} className="h-full aspect-square" />
+        <img
+          src={`/public/images/muscle/${muscleName}.jpg`}
+          className="w-48 aspect-square border-2 rounded-md"
+        />
         <div className="border-2 rounded-xl p-4">
-          <div className="w-80 h-full bg-gray-light p-1.5">{description}</div>
+          <div className="w-100 h-64 bg-gray-light p-1.5 text-sm">
+            {description}
+          </div>
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ async function get() {
   return response.data;
 }
 async function post(request: string) {
-  const response = await api.post<any, Result>("/check");
+  const response = await api.post<any, Result>("/check", { script: request });
   return response.data;
 }
 

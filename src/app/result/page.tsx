@@ -1,4 +1,4 @@
-import ResultPage from "@/components/result/page";
+import ResultPage from "@/components/result/Page";
 
 export default function Page() {
   return <ResultPage />;

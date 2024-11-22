@@ -6,7 +6,6 @@ import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
 
 export default function ResultPage() {
-  // const { result } = useAnalysisStore();
   const ref = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
     content: () => ref.current,

@@ -1,18 +1,26 @@
-import { State } from "fast-jsx/interface";
 import recordAudio from "@/util/recordAudio";
-import StartButton from "../molecule/Button";
+import Button from "../molecule/Button";
 import { useEffect, useRef, useState } from "react";
 import { useMutation } from "react-query";
 import { externalApi } from "@/connection";
 import { useNavigate } from "react-router-dom";
+import useAnalysisStore from "@/store";
+import { State } from "fast-jsx/interface";
 
-export default function ButtonProvider({ className }: { className?: string }) {
+export default function ButtonProvider({
+  isRecordingState,
+  className,
+}: {
+  isRecordingState: State<boolean>;
+  className?: string;
+}) {
+  const [isRecording, setIsRecording] = isRecordingState;
+  const { setRequest } = useAnalysisStore();
   const router = useNavigate();
   const [audioUrl, setAudioUrl] = useState<string>("");
-  const [isRecording, setIsRecording] = useState<boolean>(false);
   const audioChunks = useRef<Blob[]>([]);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const { mutate, isSuccess } = useMutation({
+  const { mutate } = useMutation({
     mutationKey: ["stt"],
     mutationFn: async (audioUrl: string) => {
       const response = await fetch(audioUrl);
@@ -22,21 +30,22 @@ export default function ButtonProvider({ className }: { className?: string }) {
       });
       return externalApi.post(file);
     },
+    onSuccess: (data) => {
+      setRequest(data.text);
+      router("/pending");
+    },
   });
   useEffect(() => {
     if (!audioUrl) return;
     mutate(audioUrl);
   }, [audioUrl]);
-  useEffect(() => {
-    if (isSuccess) router("/result");
-  }, [isSuccess]);
   if (!isRecording)
     return (
-      <StartButton
+      <Button
         className={className}
         onClick={() =>
           recordAudio({
-            isRecordingState: [isRecording, setIsRecording],
+            isRecordingState,
             audioUrlState: [audioUrl, setAudioUrl],
             chunks: audioChunks,
             mediaRecorderRef,
@@ -45,13 +54,13 @@ export default function ButtonProvider({ className }: { className?: string }) {
       />
     );
   return (
-    <button
+    <Button
+      className={className}
+      isActivated={true}
       onClick={() => {
         mediaRecorderRef.current?.stop();
         setIsRecording(false);
       }}
-    >
-      Stop Recording
-    </button>
+    />
   );
 }

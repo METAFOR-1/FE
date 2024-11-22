@@ -2,12 +2,14 @@ import Svg from "@/asset/Svg";
 import { OnClick } from "fast-jsx/interface";
 import { cn } from "fast-jsx/util";
 
-export default function StartButton({
+export default function Button({
   onClick,
   className,
+  isActivated,
 }: {
   onClick: OnClick;
   className?: string;
+  isActivated?: boolean;
 }) {
   const container = {
     displays: "flex justify-center items-center",
@@ -15,8 +17,11 @@ export default function StartButton({
     boundaries: "rounded-full",
     borders: "border-2 border-orange-500",
     shadow: "shadow-md shadow-gray-500",
-    styles: "cursor-pointer hover:scale-105 duration-300",
+    styles: "cursor-pointer hover:scale-105 ",
     className,
+    animations: isActivated
+      ? "scale-105 animate-bounce-custom duration-1000"
+      : "duration-300",
   };
   const body = {
     displays: "flex justify-center items-center",

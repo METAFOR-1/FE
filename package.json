@@ -18,7 +18,8 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.26.2",
     "tailwindcss-animate": "^1.0.7",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz"
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

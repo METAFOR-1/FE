@@ -1,6 +1,6 @@
 import useAnalysisStore from "@/store";
 import { cn } from "fast-jsx/util";
-import { useMutation, useQuery } from "react-query";
+import { useMutation } from "react-query";
 import Loading from "./molecule/Loading.molecule";
 import Bubble from "./molecule/Bubble.molecule";
 import serverApi from "@/connection/api/server";

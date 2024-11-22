@@ -1,38 +1,30 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ComponentType, Fragment } from "react";
-import useRoute from "@/hook/useRoute";
+import {
+  RootPage,
+  RootLayout,
+  ChoicePage,
+  ChoiceSurveyPage,
+  RecordPage,
+  PendingPage,
+  ResultPage,
+} from "./app/route.ts";
 
 export default function App() {
-  const routes = useRoute();
   return (
     <BrowserRouter>
       <Routes>
-        {routes.map(({ path, component, layout }) => {
-          return (
-            <Route
-              key={path}
-              path={path}
-              element={RenderComponent(component, layout)}
-            />
-          );
-        })}
-        <Route
-          path="*"
-          element={
-            <div className="flex justify-center items-center w-full min-h-screen">
-              LOADING
-            </div>
-          }
-        />
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<RootPage />} />
+          <Route path="choice">
+            <Route index element={<ChoicePage />} />
+            <Route path="survey" element={<ChoiceSurveyPage />} />
+          </Route>
+          <Route path="pending" element={<PendingPage />} />
+          <Route path="record" element={<RecordPage />} />
+          <Route path="result" element={<ResultPage />} />
+          <Route path="*" element={<div>404</div>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
-}
-
-function RenderComponent(
-  Component: ComponentType<any>,
-  Layout: ComponentType<any> | null
-) {
-  if (Layout) return <Layout children={<Component />} />;
-  return <Fragment children={<Component />} />;
 }

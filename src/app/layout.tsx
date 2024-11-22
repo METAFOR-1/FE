@@ -1,16 +1,15 @@
 import Footer from "@/design/Footer";
 import Header from "@/design/Header";
-import { ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
-export default function Layout({ children }: { children: ReactNode }) {
+export default function Layout() {
   const { pathname } = useLocation();
 
   const footerIgnores = ["/record", "/result"];
   return (
     <div className="font-sf-pro">
       {pathname !== "/record" && <Header />}
-      {children}
+      <Outlet />
       {!footerIgnores.includes(pathname) && <Footer />}
     </div>
   );

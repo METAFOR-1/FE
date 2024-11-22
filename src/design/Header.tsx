@@ -50,7 +50,7 @@ export default function Header() {
   return (
     <header className={cn(container)}>
       {/* 로고 */}
-      <div className={cn(logo)}>AI TRIP</div>
+      <div className={cn(logo)}>근강하세</div>
 
       {/* 검색창 */}
       <div className={cn(searchBar.container)}>

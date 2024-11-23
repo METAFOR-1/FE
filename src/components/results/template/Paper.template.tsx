@@ -10,7 +10,7 @@ interface Props {
 function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
   const { result } = props;
   const container = {
-    displays: "flex flex-col gap-y-6.5 items-center",
+    displays: "flex flex-col gap-y-4.5 items-center",
     sizes: "w-[210mm] h-[297mm]",
     test: "border-white border-2",
     boundaries: "px-7.5 py-6",
@@ -36,7 +36,9 @@ function Paper({ props }: { props: Props }, ref: Ref<HTMLDivElement>) {
       />
       {videoId && (
         <div>
-          <div className="text-center">{result.youtubeTitle}</div>
+          <div className="text-lg font-bold text-gray-medium">
+            {result.youtubeTitle}
+          </div>
           <div className="print:hidden">
             <Youtube id={videoId} width="560" height="360" />
           </div>

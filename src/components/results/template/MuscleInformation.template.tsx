@@ -24,9 +24,10 @@ export default function MuscleInformation({
   const body = {
     displays: "flex justify-between",
   };
-  const imagePath = `/public/images/muscle/${removeSpecialCharacters(
-    muscleName
-  )}.jpg`;
+  const imagePath = [
+    "/images/muscle",
+    `/${removeSpecialCharacters(muscleName)}.jpg`,
+  ].join("");
   const [imageExists, setImageExists] = useState<boolean | null>(null);
   useEffect(() => {
     const checkImage = async () => {
@@ -47,7 +48,7 @@ export default function MuscleInformation({
       <div className="font-bold text-3xl">{muscleName}</div>
       <div className={cn(body)}>
         <img
-          src={imageExists ? imagePath : "/public/images/muscle/default.png"}
+          src={imageExists ? imagePath : "/images/muscle/default.png"}
           className="w-48 aspect-square border-2 rounded-md"
         />
         <div className="border-2 rounded-xl p-4">

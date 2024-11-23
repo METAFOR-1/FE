@@ -4,8 +4,10 @@ import { Button } from "fast-jsx";
 import { useReactToPrint } from "react-to-print";
 import { useRef } from "react";
 import useAnalysisStore from "@/store";
+import { useNavigate } from "react-router-dom";
 
 export default function ResultPage() {
+  const router = useNavigate();
   const { result } = useAnalysisStore();
   const ref = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({
@@ -27,18 +29,32 @@ export default function ResultPage() {
         </div>
         <div>결과지를 출력할까요?</div>
       </div>
-      <Button
-        title="네, 출력할래요"
-        onClick={() => handlePrint()}
-        option={{
-          width: "w-40",
-          height: "h-14",
-          background: "bg-[#FD8300] hover:bg-white",
-          textColor: "text-white hover:text-[#FD8300]",
-          boundary: "border-2 border-[#FD8300] duration-500 rounded-md",
-          font: "text-lg",
-        }}
-      />
+      <div className="flex gap-x-3.5">
+        <Button
+          title="네, 출력할래요"
+          onClick={() => handlePrint()}
+          option={{
+            width: "w-40",
+            height: "h-14",
+            background: "bg-[#FD8300] hover:bg-white",
+            textColor: "text-white hover:text-[#FD8300]",
+            boundary: "border-2 border-[#FD8300] duration-500 rounded-md",
+            font: "text-lg",
+          }}
+        />
+        <Button
+          title="홈으로 돌아가기"
+          onClick={() => router("/")}
+          option={{
+            width: "w-40",
+            height: "h-14",
+            background: "bg-white hover:bg-[#FD8300]",
+            textColor: "text-[#FD8300] hover:text-white",
+            boundary: "border-2 border-[#FD8300] duration-500 rounded-md",
+            font: "text-lg",
+          }}
+        />
+      </div>
     </div>
   );
 }

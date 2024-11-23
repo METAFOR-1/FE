@@ -26,6 +26,7 @@ export default function MuscleInformation({
       <div className={cn(body)}>
         <img
           src={`/images/muscle/${muscleName}.jpg`}
+          alt={muscleName}
           className="w-48 aspect-square border-2 rounded-md"
         />
         <div className="border-2 rounded-xl p-4">

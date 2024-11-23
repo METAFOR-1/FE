@@ -13,7 +13,7 @@ export default function RootPage() {
       {/* 메인 컨테이너 */}
       <div className="flex items-center justify-between w-full p-10 bg-white">
         {/* 왼쪽 텍스트 영역 */}
-        <div className="flex flex-col justify-center gap-6 ml-20 mt-10">
+        <div className="flex flex-col justify-center gap-6 ml-20 mt-10 z-10">
           <h1 className="text-7xl font-bold leading-snug text-black">
             말만 하면 해결되는 <br /> 스트레칭 도우미
           </h1>
@@ -40,7 +40,7 @@ export default function RootPage() {
         </div>
 
         {/* 오른쪽 이미지 영역 */}
-        <div className="flex-shrink-0 w-1/2 h-auto">
+        <div className="flex-shrink-0 w-1/2 h-auto relative z-0">
           <img
             src="/images/메이니.png"
             alt="스트레칭 이미지"

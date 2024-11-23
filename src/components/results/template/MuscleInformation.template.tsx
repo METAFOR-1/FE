@@ -1,4 +1,5 @@
 import { cn } from "fast-jsx/util";
+import { useEffect } from "react";
 
 interface MuscleInformationProps {
   imageUrl: string;
@@ -20,12 +21,15 @@ export default function MuscleInformation({
   const body = {
     displays: "flex justify-between",
   };
+  useEffect(() => {
+    console.log(`/images/muscle/${muscleName}.jpg`);
+  }, [muscleName]);
   return (
     <div className={cn(container)}>
       <div className="font-bold text-3xl">{muscleName}</div>
       <div className={cn(body)}>
         <img
-          src={`/images/muscle/${muscleName}.jpg`}
+          src={`/images/muscle/${muscleName}.jpg?timestamp=${Date.now()}`}
           alt={muscleName}
           className="w-48 aspect-square border-2 rounded-md"
         />

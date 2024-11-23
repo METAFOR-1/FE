@@ -24,10 +24,7 @@ export default function MuscleInformation({
   const body = {
     displays: "flex justify-between",
   };
-  const imagePath = [
-    "/images/muscle",
-    `/${removeSpecialCharacters(muscleName)}.jpg`,
-  ].join("");
+  const imagePath = ["/images/muscle", `/${muscleName}.jpg`].join("");
   const [imageExists, setImageExists] = useState<boolean | null>(null);
   useEffect(() => {
     const checkImage = async () => {
